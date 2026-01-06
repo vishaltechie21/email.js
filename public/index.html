@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Integration Test</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .card {
+      border: none;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+    }
+
+    .card-header {
+      background-color: #fff;
+      border-bottom: 1px solid #eee;
+      font-weight: 600;
+      color: #0d6efd;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-body {
+      padding: 2rem;
+    }
+
+    .form-label {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .btn-primary {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+      font-weight: 500;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .btn-danger {
+      font-weight: 500;
+      padding: 0.5rem 1.5rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+
+    .text-muted {
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container py-5">
+    <div class="d-flex align-items-center mb-4">
+      <h1 class="mb-0">Email Integration</h1>
+    </div>
+    <p class="text-muted mb-4">Configure and manage email integration settings</p>
+
+    <!-- Email Configuration -->
+    <div class="card">
+      <div class="card-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope"
+          viewBox="0 0 16 16">
+          <path
+            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+        </svg>
+        Email Configuration
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="smtpHost" class="form-label">SMTP Host *</label>
+            <input type="text" class="form-control" id="smtpHost" placeholder="smtp.gmail.com" value="smtp.gmail.com">
+          </div>
+          <div class="col-md-6">
+            <label for="smtpPort" class="form-label">SMTP Port *</label>
+            <input type="number" class="form-control" id="smtpPort" placeholder="587" value="587">
+          </div>
+          <div class="col-md-6">
+            <label for="smtpUser" class="form-label">SMTP Username *</label>
+            <input type="text" class="form-control" id="smtpUser" placeholder="email@example.com">
+          </div>
+          <div class="col-md-6">
+            <label for="smtpPass" class="form-label">SMTP Password *</label>
+            <input type="password" class="form-control" id="smtpPass" placeholder="••••••••••••••••">
+          </div>
+          <div class="col-md-6">
+            <label for="fromEmail" class="form-label">From Email *</label>
+            <input type="email" class="form-control" id="fromEmail" placeholder="admin@example.com">
+          </div>
+          <div class="col-md-6">
+            <label for="fromName" class="form-label">From Name</label>
+            <input type="text" class="form-control" id="fromName" placeholder="My App">
+          </div>
+        </div>
+        <div class="d-flex justify-content-between mt-4">
+          <button class="btn btn-danger" onclick="clearConfig()">Delete Integration</button>
+          <button class="btn btn-primary" onclick="saveConfig()">Save Configuration</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email Template Preview (Placeholder) -->
+    <div class="card">
+      <div class="card-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+          viewBox="0 0 16 16">
+          <path
+            d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+          <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+        </svg>
+        Email Template Preview
+      </div>
+      <div class="card-body">
+        <p class="text-muted">This is how the appointment confirmation email will appear to patients:</p>
+        <div class="text-end">
+          <button class="btn btn-outline-primary btn-sm">Show Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Test Email -->
+    <div class="card">
+      <div class="card-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send"
+          viewBox="0 0 16 16">
+          <path
+            d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
+        </svg>
+        Test Email
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="toEmail" class="form-label">To Email *</label>
+            <input type="email" class="form-control" id="toEmail" placeholder="recipient@example.com">
+          </div>
+          <div class="col-md-6">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" class="form-control" id="subject" placeholder="Test Email" value="Test Email">
+          </div>
+          <div class="col-12">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message"
+              rows="3">This is a test email to verify email configuration.</textarea>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end mt-4">
+          <button class="btn btn-primary" id="sendTestBtn" onclick="sendTestEmail()">
+            Send Test
+          </button>
+        </div>
+        <div id="statusMessage" class="mt-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Load config on startup
+    document.addEventListener('DOMContentLoaded', loadConfig);
+
+    function loadConfig() {
+      const saved = localStorage.getItem('emailConfig');
+      if (saved) {
+        const config = JSON.parse(saved);
+        if (config.smtpHost) document.getElementById('smtpHost').value = config.smtpHost;
+        if (config.smtpPort) document.getElementById('smtpPort').value = config.smtpPort;
+        if (config.smtpUser) document.getElementById('smtpUser').value = config.smtpUser;
+        if (config.smtpPass) document.getElementById('smtpPass').value = config.smtpPass;
+        if (config.fromEmail) document.getElementById('fromEmail').value = config.fromEmail;
+        if (config.fromName) document.getElementById('fromName').value = config.fromName;
+      }
+    }
+
+    function saveConfig() {
+      const config = {
+        smtpHost: document.getElementById('smtpHost').value,
+        smtpPort: document.getElementById('smtpPort').value,
+        smtpUser: document.getElementById('smtpUser').value,
+        smtpPass: document.getElementById('smtpPass').value,
+        fromEmail: document.getElementById('fromEmail').value,
+        fromName: document.getElementById('fromName').value,
+      };
+      localStorage.setItem('emailConfig', JSON.stringify(config));
+      alert('Configuration saved to local storage!');
+    }
+
+    function clearConfig() {
+      if (confirm('Are you sure you want to delete the saved configuration?')) {
+        localStorage.removeItem('emailConfig');
+        document.getElementById('smtpHost').value = 'smtp.gmail.com';
+        document.getElementById('smtpPort').value = '587';
+        document.getElementById('smtpUser').value = '';
+        document.getElementById('smtpPass').value = '';
+        document.getElementById('fromEmail').value = '';
+        document.getElementById('fromName').value = '';
+        alert('Configuration deleted.');
+      }
+    }
+
+    async function sendTestEmail() {
+      const btn = document.getElementById('sendTestBtn');
+      const statusDiv = document.getElementById('statusMessage');
+
+      const config = {
+        smtpHost: document.getElementById('smtpHost').value,
+        smtpPort: document.getElementById('smtpPort').value,
+        smtpUser: document.getElementById('smtpUser').value,
+        smtpPass: document.getElementById('smtpPass').value,
+        fromEmail: document.getElementById('fromEmail').value,
+        fromName: document.getElementById('fromName').value,
+        to: document.getElementById('toEmail').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+      };
+
+      if (!config.smtpHost || !config.smtpUser || !config.smtpPass || !config.fromEmail || !config.to) {
+        statusDiv.innerHTML = '<div class="alert alert-warning">Please fill in all required fields.</div>';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+      statusDiv.innerHTML = '';
+
+      try {
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(config)
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          statusDiv.innerHTML = '<div class="alert alert-success">Email sent successfully!</div>';
+        } else {
+          statusDiv.innerHTML = `<div class="alert alert-danger">Error: ${data.message}</div>`;
+        }
+      } catch (error) {
+        statusDiv.innerHTML = `<div class="alert alert-danger">Network Error: ${error.message}</div>`;
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = 'Send Test';
+      }
+    }
+  </script>
+</body>
+
+</html>
